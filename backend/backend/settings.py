@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Replace default user model
+AUTH_USER_MODEL = "user.User"
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+
+    'user',
 ]
 
 MIDDLEWARE = [
