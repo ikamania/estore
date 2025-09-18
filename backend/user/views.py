@@ -8,5 +8,10 @@ from user.serializers import UserSerializer
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+        
+    def get_permissions(self):
+        if self.action == "create":
+            return [permissions.AllowAny()]
+
+        return [permissions.AllowAny()] # allow any request
 

@@ -7,7 +7,7 @@ const Authform = ({ title, fields, outTitle, outLink, action }) => {
 
       {fields}
 
-      <button className="border w-full mt-[1rem]" onClick={action} >Submit</button>
+      <button className="border w-full mt-[1rem] cursor-pointer" onClick={action} >Submit</button>
 
       <Link to={outLink} className="border w-full flex justify-center">
         {outTitle}

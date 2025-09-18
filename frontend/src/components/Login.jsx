@@ -1,20 +1,28 @@
 import Authform from "./auth/Authform"
 import Inputfield from "./auth/Inputfield.jsx"
 
+import { useAuth } from "../auth/Auth"
+
 import { useState } from "react";
 
 const Login = () => {
+  const { login } = useAuth()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const fields = [
-    <Inputfield value={email} onChange={(e) => setEmail(e.target.value)} label="Email:" placeholder="Enter your email" type="email" />,
-    <Inputfield value={password} onChange={(e) => setPassword(e.target.value)} label="Password:" placeholder="Enter your password" type="text" />,
+    <Inputfield key="email" value={email} onChange={(e) => setEmail(e.target.value)} label="Email:" placeholder="Enter your email" type="email" />,
+    <Inputfield key="password" value={password} onChange={(e) => setPassword(e.target.value)} label="Password:" placeholder="Enter your password" type="password" />,
   ]
+
+  const handleLogin = async () => {
+    await login(email, password)
+  }
 
   return (
     <section className="w-full h-full flex justify-center">
-      <Authform title="Sign in" fields={fields} outTitle='Sign up' outLink='/signup' />
+      <Authform title="Sign in" fields={fields} outTitle='Sign up' outLink='/signup' action={handleLogin} />
     </section>
   )
 }
