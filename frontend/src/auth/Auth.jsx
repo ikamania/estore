@@ -9,9 +9,8 @@ const url = "http://localhost:8000"
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(
-    () => JSON.parse(localStorage.getItem("tokens")) || null
+    () => JSON.parse(localStorage.getItem("token")) || null
   )
-  const [user, setUser] = useState(null)
 
   const navigate = useNavigate()
   const t = 1500
@@ -27,7 +26,6 @@ export function AuthProvider({ children }) {
       if (response.ok) {
         const data = await response.json()
         setToken(data)
-        setUser({ email })
 
         localStorage.setItem("token", JSON.stringify(data))
 
@@ -123,7 +121,7 @@ export function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout, signup }}>
+    <AuthContext.Provider value={{ token, login, logout, signup }}>
       {children}
     </ AuthContext.Provider>
   )

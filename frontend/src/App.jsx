@@ -5,6 +5,8 @@ import Menu from './components/Menu.jsx'
 import Home from './components/Home.jsx'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
+import Account from './components/Account.jsx'
+
 import { AuthProvider } from './auth/Auth.jsx'
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
             <Route path='/' element={<Home />}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/signup' element={<Signup />}></Route>
+            <Route path='/account' element={<Account />}></Route>
           </Routes>
         </div>
 
