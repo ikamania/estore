@@ -15,7 +15,7 @@ function App() {
       <div className='w-screen h-screen flex flex-col'>
         <Menu />
 
-        <div className='flex-1'>
+        <div className='flex-1 h-[90%]'>
           <Routes>
             <Route path='/' element={<Home />}></Route>
             <Route path='/login' element={<Login />}></Route>

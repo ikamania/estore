@@ -3,13 +3,14 @@ import pfp from '../assets/pfp.jpg'
 
 import { CiLogout } from "react-icons/ci"
 
+import { Link } from "react-router-dom";
 import { useAuth } from "../auth/Auth"
 import { useEffect, useState } from 'react'
 
 
 const Account = () => {
   const [user, setUser] = useState(null)
-  const { token } = useAuth()
+  const { token, logout } = useAuth()
   const [loading, setLoading] = useState(true)
 
   const url = "http://localhost:8000"
@@ -46,9 +47,16 @@ const Account = () => {
     return <p>loading</p>
   }
 
+  const handleLogout = async () => {
+    await logout()
+  }
+
   return (
     <div className="px-[1rem] w-full h-full flex flex-col gap-[1rem]">
-      <h1 className="text-[2rem]">Account</h1>
+      <div className="w-full flex flex-row justify-between items-center text-[2rem]">
+        <h1>Account</h1>
+        <CiLogout onClick={handleLogout} />
+      </div>
 
       <div className="info-box h-[15%] flex items-center">
         <div className="h-full aspect-square rounded-full overflow-hidden flex items-center">
