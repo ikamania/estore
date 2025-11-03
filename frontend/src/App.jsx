@@ -2,7 +2,7 @@ import './App.css'
 import { Routes, Route } from 'react-router-dom'
 
 import Menu from './components/Menu.jsx'
-import Home from './components/Home.jsx'
+import Store from './components/Store.jsx'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 import Account from './components/Account.jsx'
@@ -15,9 +15,9 @@ function App() {
       <div className='w-screen h-screen flex flex-col'>
         <Menu />
 
-        <div className='flex-1 h-[90%]'>
+        <div className='flex-1'>
           <Routes>
-            <Route path='/' element={<Home />}></Route>
+            <Route path='/' element={<Store />}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/signup' element={<Signup />}></Route>
             <Route path='/account' element={<Account />}></Route>
