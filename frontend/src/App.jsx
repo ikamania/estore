@@ -6,6 +6,7 @@ import Store from './components/Store.jsx'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 import Account from './components/Account.jsx'
+import Addproduct from './components/Addproduct.jsx'
 
 import { AuthProvider } from './auth/Auth.jsx'
 
@@ -21,11 +22,12 @@ function App() {
             <Route path='/login' element={<Login />}></Route>
             <Route path='/signup' element={<Signup />}></Route>
             <Route path='/account' element={<Account />}></Route>
+            <Route path='/add_product' element={<Addproduct />}></Route>
           </Routes>
         </div>
 
       </div>
-    </AuthProvider>
+    </AuthProvider >
   )
 }
 

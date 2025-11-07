@@ -58,7 +58,7 @@ const Account = () => {
         <CiLogout onClick={handleLogout} />
       </div>
 
-      <div className="info-box h-[15%] flex items-center">
+      <div className="info-box h-[15%] flex justify-between">
         <div className="h-full aspect-square rounded-full overflow-hidden flex items-center">
           <img src={pfp} alt="cant load" className=""></img>
         </div>
@@ -70,7 +70,13 @@ const Account = () => {
       </div>
 
       <div className="info-box h-[40%]">
+        <div className="flex justify-between items-center font-bold">
+          <h1>MY PRODUCTS</h1>
+          <a href='/add_product' className="p-[.2rem] cursor-pointer text-red-500">ADD PRODUCT</a>
+        </div>
 
+        <div>
+        </div>
       </div>
 
       <div className="info-box h-[20%]">

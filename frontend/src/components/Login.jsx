@@ -1,5 +1,5 @@
-import Authform from "./auth/Authform"
-import Inputfield from "./auth/Inputfield.jsx"
+import Authform from "./Authform"
+import Inputfield from "./Inputfield.jsx"
 
 import { useAuth } from "../auth/Auth"
 

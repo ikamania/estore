@@ -6,6 +6,18 @@
   --size-small: 0.9rem;
 }
 
-input {
-  @apply focus:outline-none;
+input, textarea {
+  @apply focus:outline-none border rounded-[.3rem] p-[.3rem];
+}
+
+@layer components {
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }

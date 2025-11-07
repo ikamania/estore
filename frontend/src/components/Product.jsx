@@ -1,8 +1,8 @@
 const Product = ({ image, text, price }) => {
   return (
-    <div className="w-full h-[20rem] mb-[1rem] p-[.5rem] cursor-pointer">
+    <div className="w-full sm:w-[48%] md:w-[30%] lg:w-[20%] h-[20rem] p-[.5rem] cursor-pointer">
       <div className="w-full h-[70%] bg-gray-100 flex justify-center items-center">
-        <img src={image} alt="dogleash" className="w-[93%] h-[93%] object-cover"></img>
+        <img src={image} alt="image could not be loaded" className="w-[93%] h-[93%] object-cover"></img>
       </div>
 
       <p className="text-[1.2rem]">

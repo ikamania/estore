@@ -9,6 +9,6 @@ class Product(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
     price = models.PositiveIntegerField()
-    category = models.CharField()
+    # category = models.CharField()
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
