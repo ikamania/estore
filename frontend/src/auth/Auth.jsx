@@ -4,13 +4,15 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext()
-const url = "http://localhost:8000"
+export const url = "http://localhost:8000"
 
 
 export function AuthProvider({ children }) {
-  const [token, setToken] = useState(
-    () => JSON.parse(localStorage.getItem("token")) || null
-  )
+  const [token, setToken] = useState(() => {
+    const stored = localStorage.getItem("token")
+
+    return stored ? JSON.parse(stored) : null
+  })
 
   const navigate = useNavigate()
   const t = 1500
@@ -120,7 +122,7 @@ export function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ token, login, logout, signup }}>
+    <AuthContext.Provider value={{ token, setToken, login, logout, signup }}>
       {children}
     </ AuthContext.Provider>
   )
