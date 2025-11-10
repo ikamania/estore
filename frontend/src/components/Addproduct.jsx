@@ -88,15 +88,53 @@ const Addproduct = () => {
   }
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
-      <form className="p-[1rem] flex flex-col gap-3 max-w-[25rem]" onSubmit={handleUpload}>
-        <h1 className="flex justify-center text-[2rem] font-bold">Your Product</h1>
-        <input placeholder="Product Name" onChange={(e) => setName(e.target.value)} />
-        <textarea placeholder="Description Of Your Product" className="h-[10rem]" onChange={(e) => setDescription(e.target.value)} />
-        <input placeholder="Price" type="number" min="0.10" step="0.01" onChange={(e) => setPrice(e.target.value)} />
-        <input type="file" accept="image/*" onChange={handleImageChange} />
-        <img src={preview} alt="" className="w-full object-contain" />
-        <button type="submit" className="border-1 rounded-[.4rem] border-gray-500 text-[1.3rem] font-bold cursor-pointer">
+    <div className="w-full h-full flex justify-center items-center bg-white">
+      <form
+        className="p-6 flex flex-col gap-4 max-w-[25rem] w-full bg-gray-50 border border-gray-200 rounded-lg shadow-sm"
+        onSubmit={handleUpload}
+      >
+        <h1 className="text-center text-2xl font-bold text-gray-800">Your Product</h1>
+
+        <input
+          placeholder="Product Name"
+          onChange={(e) => setName(e.target.value)}
+          className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gray-400"
+        />
+
+        <textarea
+          placeholder="Description Of Your Product"
+          className="h-40 p-2 border border-gray-300 rounded resize-none focus:outline-none focus:ring-2 focus:ring-gray-400"
+          onChange={(e) => setDescription(e.target.value)}
+        />
+
+        <input
+          placeholder="Price"
+          type="number"
+          min="0.10"
+          step="0.01"
+          onChange={(e) => setPrice(e.target.value)}
+          className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gray-400"
+        />
+
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          className="border border-gray-300 rounded p-1 cursor-pointer"
+        />
+
+        {preview && (
+          <img
+            src={preview}
+            alt="Preview"
+            className="w-full h-48 object-contain rounded border border-gray-200"
+          />
+        )}
+
+        <button
+          type="submit"
+          className="p-2 bg-gray-800 text-white font-bold text-lg rounded hover:bg-gray-700 transition-colors"
+        >
           Post Product
         </button>
       </form>

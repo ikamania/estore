@@ -77,35 +77,45 @@ const Account = () => {
   }
 
   return (
-    <div className="px-[1rem] h-[90%] flex flex-col gap-[1rem]">
-      <div className="w-full flex flex-row justify-between items-center text-[2rem]">
-        <h1>Account</h1>
-        <CiLogout onClick={handleLogout} />
+    <div className="px-[1rem] h-[90%] flex flex-col gap-[1rem] bg-white">
+      <div className="w-full flex flex-row justify-between items-center text-2xl font-semibold">
+        <h1 className="text-gray-800">Account</h1>
+        <CiLogout
+          onClick={handleLogout}
+          className="text-gray-600 hover:text-red-500 cursor-pointer text-2xl transition-colors"
+        />
       </div>
 
-      <div className="info-box h-[15%] flex justify-between">
+      <div className="info-box h-[15%] flex justify-between bg-gray-50 border border-gray-200 rounded-lg p-3 shadow-sm">
         <div className="h-full aspect-square rounded-full overflow-hidden flex items-center">
-          <img src={pfp} alt="cant load" className=""></img>
+          <img src={pfp} alt="cant load" className="w-full h-full object-cover" />
         </div>
 
-        <div>
-          <h1>{user.email}</h1>
-          <h1>{user.username}</h1>
+        <div className="flex flex-col justify-center ml-4">
+          <h1 className="text-gray-800 font-semibold truncate">{user.email}</h1>
+          <h1 className="text-gray-600 truncate">{user.username}</h1>
         </div>
       </div>
 
-      <div className="info-box">
-        <div className="flex justify-between items-center font-bold">
-          <h1>MY PRODUCTS</h1>
-          <a href='/add_product' className="p-[.2rem] cursor-pointer text-red-500">ADD PRODUCT</a>
+      <div className="info-box flex flex-col bg-gray-50 border border-gray-200 rounded-lg p-3 shadow-sm">
+        <div className="flex justify-between items-center font-bold mb-2">
+          <h1 className="text-gray-800 text-lg">MY PRODUCTS</h1>
+          <a
+            href="/add_product"
+            className="p-1 cursor-pointer text-red-500 hover:text-red-400 transition-colors"
+          >
+            ADD PRODUCT
+          </a>
         </div>
 
-        <div className="flex overflow-x-auto">
+        <div className="flex overflow-x-auto gap-3">
           {products.length === 0 ? (
-            <p className="text-center w-full">No products found</p>
+            <p className="text-center w-full text-gray-500">No products found</p>
           ) : (
             products.map(prod => (
               <Product
+                key={prod.id}
+                id={prod.id}
                 image={prod.image}
                 price={`${prod.price}`}
                 text={prod.name}
@@ -114,7 +124,8 @@ const Account = () => {
           )}
         </div>
       </div>
-    </div >
+    </div>
+
   )
 }
 

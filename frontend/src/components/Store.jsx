@@ -32,17 +32,18 @@ const Store = () => {
     return <p className="text-center mt-10">Loading products...</p>
   }
   return (
-    <div className="flex flex-wrap justify-center gap-3 p-2">
+    <div className="flex flex-wrap justify-around p-2">
       {products.length === 0 ? (
         <p className="text-center">No products found.</p>
       ) : (
         products.map(prod => {
           return (
             <Product
+              id={prod.id}
               key={prod.id}
               image={prod.image}
               price={`${prod.price}`}
-              text={prod.name}
+              text={prod.description}
             />
           )
         })

@@ -7,6 +7,7 @@ import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 import Account from './components/Account.jsx'
 import Addproduct from './components/Addproduct.jsx'
+import ProductPage from './components/ProductPage.jsx'
 
 import { AuthProvider } from './auth/Auth.jsx'
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/account' element={<Account />}></Route>
           <Route path='/add_product' element={<Addproduct />}></Route>
+          <Route path='/product/:id' element={<ProductPage />}></Route>
         </Routes>
       </div>
     </AuthProvider >

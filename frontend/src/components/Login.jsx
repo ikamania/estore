@@ -21,8 +21,14 @@ const Login = () => {
   }
 
   return (
-    <section className="w-full h-full flex justify-center">
-      <Authform title="Sign in" fields={fields} outTitle='Sign up' outLink='/signup' action={handleLogin} />
+    <section className="w-full h-full flex justify-center items-center bg-white">
+      <Authform
+        title="Sign in"
+        fields={fields}
+        outTitle="Sign up"
+        outLink="/signup"
+        action={handleLogin}
+      />
     </section>
   )
 }

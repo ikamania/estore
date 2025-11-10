@@ -64,18 +64,28 @@ const Menu = () => {
   }, [token])
 
   return (
-    <div className="w-full h-[10%] border-b-[0.05rem] justify-end flex items-center p-[1rem] gap-[.3rem]">
-      <Link to="/">
-        <GoHome />
+    <div className="w-full h-[4rem] bg-white border-b border-gray-200 shadow-sm flex items-center justify-end p-4 gap-4">
+
+      <Link
+        to="/"
+        className="p-2 rounded hover:bg-gray-100 transition-colors duration-200"
+      >
+        <GoHome className="text-gray-700 text-2xl" />
       </Link>
 
       {isValid ? (
-        <Link to="/account">
-          <MdOutlineAccountCircle />
+        <Link
+          to="/account"
+          className="p-2 rounded hover:bg-gray-100 transition-colors duration-200"
+        >
+          <MdOutlineAccountCircle className="text-gray-700 text-2xl" />
         </Link>
       ) : (
-        <Link to="/login">
-          <CiLogin />
+        <Link
+          to="/login"
+          className="p-2 rounded hover:bg-gray-100 transition-colors duration-200"
+        >
+          <CiLogin className="text-gray-700 text-2xl" />
         </Link>
       )}
     </div>
