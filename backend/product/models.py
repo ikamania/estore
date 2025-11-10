@@ -9,6 +9,7 @@ class Product(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
     price = models.PositiveIntegerField()
+    image = models.ImageField(upload_to="products", null=True)
     # category = models.CharField()
     uploaded_at = models.DateTimeField(auto_now_add=True)
 

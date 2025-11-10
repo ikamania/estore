@@ -16,16 +16,13 @@ function App() {
       <div className='w-screen h-screen flex flex-col'>
         <Menu />
 
-        <div className='flex-1'>
-          <Routes>
-            <Route path='/' element={<Store />}></Route>
-            <Route path='/login' element={<Login />}></Route>
-            <Route path='/signup' element={<Signup />}></Route>
-            <Route path='/account' element={<Account />}></Route>
-            <Route path='/add_product' element={<Addproduct />}></Route>
-          </Routes>
-        </div>
-
+        <Routes>
+          <Route path='/' element={<Store />}></Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/signup' element={<Signup />}></Route>
+          <Route path='/account' element={<Account />}></Route>
+          <Route path='/add_product' element={<Addproduct />}></Route>
+        </Routes>
       </div>
     </AuthProvider >
   )

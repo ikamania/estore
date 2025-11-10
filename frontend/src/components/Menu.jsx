@@ -23,35 +23,37 @@ const Menu = () => {
 
           if (verifyRes.ok) {
             setIsValid(true)
+          } else {
+            const refreshToken = token.refresh
+
+            const refreshRes = await fetch(`${url}/api/token/refresh/`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ refresh: refreshToken }),
+            })
+
+            if (refreshRes.ok) {
+              const data = await refreshRes.json()
+
+              const updatedToken = {
+                ...token,
+                access: data.access,
+              }
+
+              localStorage.setItem("token", JSON.stringify(updatedToken))
+              try {
+                setToken(updatedToken)
+              } catch (err) {
+                console.log("Error in setToken:", err)
+              }
+              setIsValid(true)
+            } else {
+              localStorage.removeItem("token")
+              setToken(null)
+            }
           }
         } else {
-          const refreshToken = token.refresh
-
-          const refreshRes = await fetch(`${url}/api/token/refresh/`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ refresh: refreshToken }),
-          })
-          if (refreshRes.ok) {
-            const data = await refreshRes.json()
-
-            const updatedToken = {
-              ...token,
-              access: data.access,
-            }
-
-            localStorage.setItem("token", JSON.stringify(updatedToken))
-            try {
-              setToken(updatedToken)
-              console.log("hree")
-            } catch (err) {
-              console.log("Error in setToken:", err)
-            }
-            setIsValid(true)
-          } else {
-            localStorage.removeItem("token")
-            setToken(null)
-          }
+          setIsValid(false)
         }
       } catch (err) {
         setIsValid(false)
@@ -59,10 +61,10 @@ const Menu = () => {
     }
 
     verifyToken()
-  }, [token, setToken])
+  }, [token])
 
   return (
-    <div className="w-full min-h-[3.5rem] h-[10%] border-b-[0.05rem] justify-end flex items-center p-[1rem] gap-[.3rem]">
+    <div className="w-full h-[10%] border-b-[0.05rem] justify-end flex items-center p-[1rem] gap-[.3rem]">
       <Link to="/">
         <GoHome />
       </Link>

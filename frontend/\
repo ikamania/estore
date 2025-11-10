@@ -39,7 +39,7 @@ const Account = () => {
     }
 
     fetchUser()
-  }, [token])
+  }, [])
 
   useEffect(() => {
     const fetchMyProducts = async () => {
@@ -66,7 +66,7 @@ const Account = () => {
     }
 
     fetchMyProducts()
-  }, [token])
+  }, [])
 
   const handleLogout = async () => {
     await logout()
@@ -76,8 +76,10 @@ const Account = () => {
     return (<h1>Waiting</h1>)
   }
 
+  console.log(products)
+
   return (
-    <div className="px-[1rem] h-[90%] flex flex-col gap-[1rem]">
+    <div className="px-[1rem] w-full h-full flex flex-col gap-[1rem]">
       <div className="w-full flex flex-row justify-between items-center text-[2rem]">
         <h1>Account</h1>
         <CiLogout onClick={handleLogout} />
@@ -94,25 +96,32 @@ const Account = () => {
         </div>
       </div>
 
-      <div className="info-box">
+      <div className="info-box h-[40%]">
         <div className="flex justify-between items-center font-bold">
           <h1>MY PRODUCTS</h1>
           <a href='/add_product' className="p-[.2rem] cursor-pointer text-red-500">ADD PRODUCT</a>
         </div>
 
-        <div className="flex overflow-x-auto">
+        <div>
           {products.length === 0 ? (
-            <p className="text-center w-full">No products found</p>
+            <p className="text-center">No products found</p>
           ) : (
-            products.map(prod => (
-              <Product
-                image={prod.image}
-                price={`${prod.price}`}
-                text={prod.name}
-              />
-            ))
+            products.map(prod => {
+              return (
+                <Product
+                  key={prod.id}
+                  image={prod.image}
+                  price={`${prod.price}`}
+                  text={prod.name}
+                />
+              )
+            })
           )}
         </div>
+      </div>
+
+      <div className="info-box h-[20%]">
+
       </div>
     </div >
   )
