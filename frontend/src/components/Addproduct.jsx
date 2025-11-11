@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import uploadImage from '../assets/grid.jpg'
-import Swal from "sweetalert2";
+import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom"
 import { useAuth, url } from "../auth/Auth"
 
 
@@ -12,6 +12,7 @@ const Addproduct = () => {
   const [name, setName] = useState(null)
   const [description, setDescription] = useState("")
   const [price, setPrice] = useState(null)
+  const navigate = useNavigate()
 
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0]
@@ -77,7 +78,7 @@ const Addproduct = () => {
         timer: t
       })
 
-      // redirect to product page
+      navigate("/")
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -133,7 +134,7 @@ const Addproduct = () => {
 
         <button
           type="submit"
-          className="p-2 bg-gray-800 text-white font-bold text-lg rounded hover:bg-gray-700 transition-colors"
+          className="p-2 bg-gray-800 text-white font-bold text-lg rounded hover:bg-gray-700 transition-colors cursor-pointer"
         >
           Post Product
         </button>
