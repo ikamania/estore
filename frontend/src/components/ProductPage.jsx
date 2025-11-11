@@ -9,7 +9,6 @@ const ProductPage = () => {
   const { id } = useParams()
   const [product, setProduct] = useState(null)
   const [user, setUser] = useState(null)
-  const [isOwner, SetIsOwner] = useState(false)
   const { token } = useAuth()
   const navigate = useNavigate()
 
@@ -52,12 +51,11 @@ const ProductPage = () => {
         const data = await response.json()
 
         setUser(data)
-        SetIsOwner(user.id === product.user)
       } catch (err) {
         Swal.fire({
           icon: "error",
           text: err.message,
-          timer: t
+          timer: 1500,
         })
       }
     }
@@ -138,7 +136,7 @@ const ProductPage = () => {
                 <button className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-xl hover:bg-blue-700 transition">
                   Add to Cart
                 </button>
-                {isOwner && (
+                {user.id === product.user && (
                   <button
                     onClick={handleDelete}
                     className="bg-red-600 text-white font-semibold py-2 px-4 rounded-xl hover:bg-red-700 transition cursor-pointer"
