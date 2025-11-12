@@ -113,7 +113,7 @@ const Account = () => {
 
         <div className="flex overflow-x-auto gap-3">
           {products.length === 0 ? (
-            <p className="text-center w-full text-gray-500">No products found</p>
+            <p className="text-center w-full text-gray-500">No products uploaded</p>
           ) : (
             products.map(prod => (
               <Product

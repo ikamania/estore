@@ -1,9 +1,10 @@
 import { CiLogin } from "react-icons/ci"
 import { GoHome } from "react-icons/go"
 import { MdOutlineAccountCircle } from "react-icons/md"
+import { HiOutlineShoppingCart } from "react-icons/hi2"
 
 import './styles/Menu.css'
-import { Link } from "react-router-dom"
+import IconLink from "./menu/IconLink"
 import { useEffect, useState } from "react"
 import { useAuth, url } from "./auth/Auth"
 
@@ -66,27 +67,13 @@ const Menu = () => {
   return (
     <div className="w-full h-[4rem] bg-white border-b border-gray-200 shadow-sm flex items-center justify-end p-4 gap-4">
 
-      <Link
-        to="/"
-        className="p-2 rounded hover:bg-gray-100 transition-colors duration-200"
-      >
-        <GoHome className="text-gray-700 text-2xl" />
-      </Link>
+      <IconLink to="/" Icon={GoHome} />
+      <IconLink to="cart" Icon={HiOutlineShoppingCart} />
 
       {isValid ? (
-        <Link
-          to="/account"
-          className="p-2 rounded hover:bg-gray-100 transition-colors duration-200"
-        >
-          <MdOutlineAccountCircle className="text-gray-700 text-2xl" />
-        </Link>
+        <IconLink to="account" Icon={MdOutlineAccountCircle} />
       ) : (
-        <Link
-          to="/login"
-          className="p-2 rounded hover:bg-gray-100 transition-colors duration-200"
-        >
-          <CiLogin className="text-gray-700 text-2xl" />
-        </Link>
+        <IconLink to="login" Icon={CiLogin} />
       )}
     </div>
   )

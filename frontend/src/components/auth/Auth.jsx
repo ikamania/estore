@@ -1,7 +1,7 @@
-import { createContext, useContext, useState } from "react";
-import Swal from "sweetalert2";
+import { createContext, useContext, useState } from "react"
+import Swal from "sweetalert2"
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 const AuthContext = createContext()
 export const url = "http://localhost:8000"

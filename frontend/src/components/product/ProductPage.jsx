@@ -4,6 +4,7 @@ import { url, useAuth } from "../auth/Auth"
 
 import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom"
+import Button from './Button'
 
 const ProductPage = () => {
   const { id } = useParams()
@@ -107,6 +108,15 @@ const ProductPage = () => {
     }
   }
 
+  const handleAdd = () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || []
+
+    if (!cart.includes(id)) {
+      cart.push(id)
+      localStorage.setItem("cart", JSON.stringify(cart))
+    }
+  }
+
   if (!product) {
     return <h1>Loading</h1>
   }
@@ -133,17 +143,11 @@ const ProductPage = () => {
                 </p>
               </div>
               <div className="flex items-center gap-4 mt-6">
-                <button className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-xl hover:bg-blue-700 transition">
-                  Add to Cart
-                </button>
                 {user && user.id === product.user && (
-                  <button
-                    onClick={handleDelete}
-                    className="bg-red-600 text-white font-semibold py-2 px-4 rounded-xl hover:bg-red-700 transition cursor-pointer"
-                  >
-                    Delete Product
-                  </button>
-                )}
+                  <Button onClick={handleDelete} text="Delete product" className="bg-red-600 hover:bg-red-700" />
+                ) || (
+                    <Button onClick={handleAdd} text="Add to cart" className="bg-blue-600 hover:bg-blue-700" />
+                  )}
               </div>
             </div>
           </div>
