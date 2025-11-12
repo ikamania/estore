@@ -5,7 +5,7 @@ import { MdOutlineAccountCircle } from "react-icons/md"
 import './styles/Menu.css'
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { useAuth, url } from "../auth/Auth"
+import { useAuth, url } from "./auth/Auth"
 
 const Menu = () => {
   const { token, setToken } = useAuth()

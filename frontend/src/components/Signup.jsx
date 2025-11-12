@@ -1,7 +1,7 @@
-import Authform from "./Authform"
-import Inputfield from "./Inputfield.jsx"
+import Authform from "./auth/Authform.jsx"
+import Inputfield from "./auth/Inputfield.jsx"
 
-import { useAuth } from "../auth/Auth"
+import { useAuth } from "./auth/Auth.jsx"
 
 import { useState } from "react";
 

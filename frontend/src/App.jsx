@@ -6,10 +6,10 @@ import Store from './components/Store.jsx'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 import Account from './components/Account.jsx'
-import Addproduct from './components/Addproduct.jsx'
-import ProductPage from './components/ProductPage.jsx'
+import Addproduct from './components/product/AddProduct.jsx'
+import ProductPage from './components/product/ProductPage.jsx'
 
-import { AuthProvider } from './auth/Auth.jsx'
+import { AuthProvider } from './components/auth/Auth.jsx'
 
 function App() {
   return (

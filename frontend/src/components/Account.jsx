@@ -1,10 +1,11 @@
 import './styles/Account.css'
 import pfp from '../assets/pfp.jpg'
-import Product from "./Product"
+import Product from "./product/Product.jsx"
+import Loading from "./Loading.jsx"
 
 import { CiLogout } from "react-icons/ci"
 
-import { url, useAuth } from "../auth/Auth"
+import { url, useAuth } from "./auth/Auth.jsx"
 import { useEffect, useState } from 'react'
 
 
@@ -73,7 +74,9 @@ const Account = () => {
   }
 
   if (!user) {
-    return (<h1>Waiting</h1>)
+    return (
+      <Loading text="WAITING" />
+    )
   }
 
   return (

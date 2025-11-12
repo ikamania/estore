@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
-import Product from "./Product"
-import { url, useAuth } from "../auth/Auth"
+import Product from "./product/Product"
+import Loading from "./Loading"
+
+import { url, useAuth } from "./auth/Auth"
 
 const Store = () => {
   const { token } = useAuth()
@@ -29,12 +31,14 @@ const Store = () => {
   }, [token])
 
   if (loading) {
-    return <p className="text-center mt-10">Loading products...</p>
+    return (
+      <Loading text="LOADING" />
+    )
   }
   return (
     <div className="flex flex-wrap justify-around p-2">
       {products.length === 0 ? (
-        <p className="text-center">No products found.</p>
+        <Loading text="NO PRODUCTS AVAILABLE" />
       ) : (
         products.map(prod => {
           return (
