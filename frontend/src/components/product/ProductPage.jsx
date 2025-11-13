@@ -114,6 +114,18 @@ const ProductPage = () => {
     if (!cart.includes(id)) {
       cart.push(id)
       localStorage.setItem("cart", JSON.stringify(cart))
+
+      Swal.fire({
+        icon: "success",
+        text: "added item to cart",
+        timer: 1500,
+      })
+    } else {
+      Swal.fire({
+        icon: "error",
+        text: "item already in the cart",
+        timer: 1500,
+      })
     }
   }
 

@@ -5,24 +5,23 @@ import Product from "./product/Product"
 
 const Cart = () => {
   const [products, setProducts] = useState([])
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || [])
 
   useEffect(() => {
-    const productIds = JSON.parse(localStorage.getItem("cart")) || []
-
     const fetchValidProducts = async () => {
-      const fetchPromises = productIds.map(id =>
-        fetch(`${url}/products/${id}/`)
-          .then(res => {
-            if (!res.ok) throw new Error(`Product ${id} not found`)
+      const validProducts = []
 
-            return res.json()
-          })
-          .catch(() => null)
-      )
+      for (const id of cart) {
+        try {
+          const res = await fetch(`${url}/products/${id}/`)
 
-      const results = await Promise.all(fetchPromises)
+          if (!res.ok) throw new Error("product not found")
+          const product = await res.json()
 
-      const validProducts = results.filter(product => product !== null)
+          validProducts.push(product)
+        } catch {
+        }
+      }
 
       setProducts(validProducts)
     }
@@ -55,13 +54,27 @@ const Cart = () => {
             <p className="text-center w-full text-gray-500">No products uploaded</p>
           ) : (
             products.map(prod => (
-              <Product
-                key={prod.id}
-                id={prod.id}
-                image={prod.image}
-                price={`${prod.price}`}
-                text={prod.name}
-              />
+              <div className="mb-3" key={prod.id}>
+                <Product
+                  id={prod.id}
+                  image={prod.image}
+                  price={`${prod.price}`}
+                  text={prod.name}
+                />
+
+                <button
+                  className="w-full h-[2rem] text-[.8rem] font-bold flex justify-center items-center bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+                  onClick={() => {
+                    const cart = JSON.parse(localStorage.getItem("cart") || [])
+                    const updatedCart = cart.filter(productId => productId !== prod.id.toString())
+
+                    localStorage.setItem("cart", JSON.stringify(updatedCart))
+                    setProducts(prevProducts => prevProducts.filter(product => product.id !== prod.id))
+                  }}
+                >
+                  REMOVE FROM CART
+                </button>
+              </div>
             ))
           )}
         </div>
