@@ -11,6 +11,7 @@ import { useAuth, url } from "./auth/Auth"
 const Menu = () => {
   const { token, setToken } = useAuth()
   const [isValid, setIsValid] = useState(false)
+  const [itemCount, setItemCount] = useState(0)
 
   useEffect(() => {
     const verifyToken = async () => {
@@ -64,11 +65,36 @@ const Menu = () => {
     verifyToken()
   }, [token])
 
+  useEffect(() => {
+    const updateCount = () => {
+      const cart = JSON.parse(localStorage.getItem("cart")) || []
+      setItemCount(cart.length)
+    }
+
+    updateCount()
+
+    window.addEventListener("cartUpdated", updateCount)
+
+    return () => {
+      window.removeEventListener("cartUpdated", updateCount)
+    }
+  }, [])
+
+  const itemCountText = () => {
+    return (
+      <h1 className="absolute bottom-0 right-0 text-[.9rem] text-red-500 font-bold">
+        {itemCount}
+      </h1>
+    )
+  }
+
   return (
     <div className="w-full h-[4rem] bg-white border-b border-gray-200 shadow-sm flex items-center justify-end p-4 gap-4">
 
       <IconLink to="/" Icon={GoHome} />
-      <IconLink to="cart" Icon={HiOutlineShoppingCart} />
+      <IconLink to="cart" Icon={HiOutlineShoppingCart}>
+        {itemCountText()}
+      </IconLink>
 
       {isValid ? (
         <IconLink to="account" Icon={MdOutlineAccountCircle} />

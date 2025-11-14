@@ -5,7 +5,7 @@ import Product from "./product/Product"
 
 const Cart = () => {
   const [products, setProducts] = useState([])
-  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || [])
+  const cart = JSON.parse(localStorage.getItem("cart")) || []
 
   useEffect(() => {
     const fetchValidProducts = async () => {
@@ -70,6 +70,8 @@ const Cart = () => {
 
                     localStorage.setItem("cart", JSON.stringify(updatedCart))
                     setProducts(prevProducts => prevProducts.filter(product => product.id !== prod.id))
+
+                    window.dispatchEvent(new Event("cartUpdated"))
                   }}
                 >
                   REMOVE FROM CART

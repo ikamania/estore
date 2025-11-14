@@ -120,6 +120,7 @@ const ProductPage = () => {
         text: "added item to cart",
         timer: 1500,
       })
+      window.dispatchEvent(new Event("cartUpdated"))
     } else {
       Swal.fire({
         icon: "error",
